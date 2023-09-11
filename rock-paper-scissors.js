@@ -20,17 +20,80 @@ function getRandomChoice()
             return "ERROR";
     }
 }
+
 // Poll console for user's choice.
 function getUserChoice()
 {
     let input = prompt("Enter either 'Rock', 'Paper' or 'Scissors'");
-    console.log("[+] User inputted: " + input);
+    switch( input )
+    {
+        case "Rock":
+            return input;
+        case "Paper":
+            return input;
+        case "Scissors":
+            return input;
+        default:
+            console.log("[-] getUserChoice() failed with bad input: " + input);
+            return "ERROR";
+    }
 }
 
-// Generate random opponent choice.
-let opponentChoice = getRandomChoice();
-console.log("[+] Computer generated choice: " + opponentChoice);
+//Plays a game of rock paper scissors.
+function playRound(userChoice, opponentChoice)
+{
+    // Generate key value pairs of choices.
+    let choiceKeyValue = {
+        "Rock": 0,
+        "Paper": 1,
+        "Scissors": 2,
+    }
 
-// Poll user's choice.
-let userChoice = getUserChoice();
-console.log("[+] User inputted choice: " + userChoice);
+    // Convert string choice to integer.
+    let userNum = choiceKeyValue[userChoice];
+    let opponentNum = choiceKeyValue[opponentChoice];
+
+    // Check if our user has won the round, if not return false;
+    if(userNum == 1 && opponentNum == 0)
+        return true;
+    else if(userNum == 2 && opponentNum == 1)
+        return true;
+    else if(userNum == 0 && opponentNum == 2)
+        return true;
+
+    return false;
+}
+
+function mainGame()
+{
+    let roundsWon = 0; let totalRounds = 5;
+    for(let i = 0; i < totalRounds; i++)
+    {
+        // Poll user's choice.
+        let userChoice = getUserChoice();
+
+        // Handle bad input.
+        if(userChoice == "ERROR")
+            return;
+
+        console.log("[+] User inputted choice: " + userChoice);
+
+        // Generate random opponent choice.
+        let opponentChoice = getRandomChoice();
+        console.log("[+] Computer generated choice: " + opponentChoice);
+
+        // Play one round with new inputs.
+        let roundResult = playRound(userChoice, opponentChoice);
+        console.log("[#] Round " + i + " Result: " + roundResult);
+
+        // Round won, increment score
+        if(roundResult)
+            roundsWon++;
+    }
+
+    // Print game results.
+    console.log("[+] You won " + roundsWon + " out of " + totalRounds + " rounds.");
+}
+
+// Run game.
+mainGame();
