@@ -1,0 +1,47 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(49, 49, 49);
+    color: rgb(250, 234, 215);
+}
+
+body {
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+header {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+button {
+    padding: 5px 20px;
+    background-color: rgb(83, 83, 83);
+
+    border-color: rgba(112, 112, 112, 0.555);
+    border-radius: 10px;
+    border-style: solid;
+}
+button:hover {
+    transition: 0.7s;
+    color: aliceblue;
+
+    border-color: rgb(166, 204, 204, 0.555);
+    border-radius: 12px;
+    border-style: solid;
+}
+button:active {
+    color: rgb(83, 83, 83);
+    background-color: rgb(250, 234, 215);
+
+    border-color: rgba(255, 255, 255, 0.555);
+    border-radius: 12px;
+    border-style: solid;
+}
+
+.score{
+    font-size: 14px;
+    font-weight: bolder;
+
+    padding: 5px 0;
+}
