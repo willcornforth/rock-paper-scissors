@@ -74,4 +74,11 @@ function postRound(userChoice, oppChoice, result)
 
     const divScore = document.querySelector('#div-score');
     divScore.textContent = "Score: " + userScore;
+
+    if(userScore >= 5)
+    {
+        // Game won.
+        divResults.textContent = "You have won the game! Congratulations!";
+        userScore = 0;
+    }
 }
